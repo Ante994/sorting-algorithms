@@ -1,28 +1,27 @@
-
 import random
 
 class AlgorithmHelper:
 
-    def __init__(self, numElements):
-        self.lst = [random.randint(1, numElements) for num in range(0, numElements)]
+    def __init__(self, num_elements):
+        self.lst = [random.randint(1, num_elements) for num in range(0, num_elements)]
 
-    def isSorted(self):
+    def is_sorted(self):
         for i in range(1, len(self.lst)):
-            if self.isLess(self.lst[i - 1], self.lst[i]):
+            if self.is_less(self.lst[i - 1], self.lst[i]):
                 return False
         
         return True
 
-    def swapElements(self, index1, index2):
-        self.lst[index1], self.lst[index2] = self.lst[index2],self.lst[index1]
+    def swap_elements(self, index_1, index_2):
+        self.lst[index_1], self.lst[index_2] = self.lst[index_2],self.lst[index_1]
 
-    def isLess(self, index1, index2):
-        if self.lst[index1] < self.lst[index2]:
+    def is_less(self, index_1, index_2):
+        if self.lst[index_1] < self.lst[index_2]:
             return True
 
-    def isGretter(self, index1, index2):
-        if self.lst[index1] > self.lst[index2]:
+    def is_greater(self, index_1, index_2):
+        if self.lst[index_1] > self.lst[index_2]:
             return True
 
-    def printElements(self):
+    def print_elements(self):
         print(self.lst) 
