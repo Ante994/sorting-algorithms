@@ -19,7 +19,7 @@ sorting algorithm depends on the application.
 
 times = {'first': [], 'second': []}
 sizes = [10, 100, 1000]
-samples = 2
+samples = 3
 
 for size in sizes:
     tot = 0.0

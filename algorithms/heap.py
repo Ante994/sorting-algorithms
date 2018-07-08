@@ -33,9 +33,9 @@ class HeapSort(AlgorithmHelper):
     def _sort(self, lst):
         # making heap, P >= C (parent, child)
         length = len(lst) - 1
-        parent = length // 2
+        last_parent = length // 2
 
-        for i in range(parent, -1, -1):
+        for i in range(last_parent, -1, -1):
             self.heap_order(lst, i, length)
         
         # sorting 
@@ -44,20 +44,19 @@ class HeapSort(AlgorithmHelper):
                 lst[0], lst[i] = lst[i], lst[0]
                 self.heap_order(lst, 0, i-1)
 
+    def heap_order(self, lst, parent_position, lenght):
+        child_position = 2*parent_position+1
 
-    def heap_order(self, lst, first, last):
-        largest = 2*first+1
-
-        while largest <= last:
-            # if child exist and child is > then left child
-            if (largest < last) and (lst[largest] < lst[largest+1]):
-                largest +=1
+        while child_position <= lenght:
+            # if child exist and right child is > then left child
+            if (child_position < lenght) and (lst[child_position+1] > lst[child_position]):
+                child_position +=1
             
             # right child is > then parent
-            if lst[largest] > lst[first]:
-                lst[largest], lst[first] = lst[first], lst[largest]
+            if lst[child_position] > lst[parent_position]:
+                lst[child_position], lst[parent_position] = lst[parent_position], lst[child_position]
                 # move to the biggest child
-                first = largest
-                largest = 2*first+1
+                parent_position = child_position
+                child_position = 2*parent_position+1
             else:
                 return #force exit
